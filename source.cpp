@@ -25,6 +25,41 @@ int Rotate(int px, int py, int r)
     return 0;
 }
 
+bool DoesPieceFit(int nTetromino, int nRotate, int nPosX, int nPosY)
+{
+    for (int px = 0; px < 4; px++)
+    {
+        for (int py = 0; py < 4; py++)
+        {
+            // indice da peça
+            int pi = Rotate(px, py, nRotate);
+
+            // indice do campo
+            int fi = (nPosY + py) * numLargura + (nPosX + px);
+
+            if (nPosX + px >= 0 && nPosX + px < numLargura)
+            {
+                if (nPosY + py >= 0 && nPosY + py < numAltura)
+                {
+                    if (tetromino[nTetromino][pi] == L'X' && pCampo[fi] != 0)
+                    {
+                        return 0; // colisão da peça
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+
+
+
+    return true;
+}
+
 int main()
 {
     // Criação das peças
@@ -78,10 +113,25 @@ int main()
 	SetConsoleActiveScreenBuffer(hConsole);
 	DWORD PixelsEscrito = 0;
 
+    // game logic stuff
     bool bGameOver = false;
+
+    int nCurrentPiece = 0;
+    int nCurrentRotate = 0;
+    int nCurrentX = numLargura / 2;
+    int nCurrentY = 0;
 
     while (!bGameOver)
     {
+        // game timing
+
+        // input
+
+        // game logic
+
+        // render output
+
+
         // criação do campo
         for (int x = 0; x < numLargura; x++)
         {
